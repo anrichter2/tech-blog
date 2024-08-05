@@ -1,0 +1,35 @@
+{{!-- used to display post and leave a comment --}}
+{{#if req.session.user_id !== post.user_id}}
+{{#each post }}
+<div>
+    <div>
+        <div>
+            <h2>{{title}}</h2>
+            <p>Posted by {{username}} on {{ format_date date_created}}</p>
+        </div>
+    </div>
+    <div>
+        <p>{{text}}</p>
+    </div>
+</div>
+{{/each}}
+<div>
+    <form>
+        <div>
+            <label for="post-comment">Comment</label>
+            <textarea id="post-comment" name="post-comment"></textarea>
+        </div>
+        <div>
+            <button type="submit">Add comment</button>
+        </div>
+    </form>
+</div>
+
+<script src="./js/commentPost.js"></script>
+{{/if}}
+
+{{#if req.session.user_id == post.user_id}}
+{{!-- Code for displaying the text fo a post beloging to the user and then buttons to update the post or delete post --}}
+
+<script src="./js/updatePost"></script>
+{{/if}}

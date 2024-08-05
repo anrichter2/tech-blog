@@ -1,0 +1,16 @@
+<div>
+    <div>
+        <h2>Welcome to your dashboard, {{username}}</h2>
+    </div>
+    {{#if posts.length}}
+        {{#each posts as |post| }}
+            <div>
+                <h3><a href="/post/{{post.id}}">{{post.title}}</a></h3>
+                <p>{{format_date post.date_created}}</p>
+            </div>
+        {{/each}}
+    {{/if}}
+    <div>
+        <button>New Post</button>
+    </div>
+</div>

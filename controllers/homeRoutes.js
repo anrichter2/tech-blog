@@ -73,7 +73,11 @@ router.get('/post/:id', withAuth, async (req, res) => {
                 {
                     model: User,
                     attributes: ['username'],
+                    exclude: ['password']
                 },
+                {
+                    model: Comment,
+                }
             ],
         });
 
