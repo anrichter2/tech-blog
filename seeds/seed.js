@@ -14,11 +14,13 @@ const seedDataBase = async () => {
         returning: true,
     });
 
-    const posts = await Post.bulkCreate(postData)
+    console.log('hit')
 
-    // for (const post of postData) {
-    //     await Post.create({...post});
-    // };
+    // const posts = await Post.bulkCreate(postData)
+
+    for (const post of postData) {
+        await Post.create({...post});
+    };
 
     process.exit(0);
 };

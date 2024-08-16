@@ -62,7 +62,7 @@ router.get('/signup', (req, res) => {
         return
     }
 
-    res.render('login');
+    res.render('signup');
 });
 
 // Route for showing an individual post
