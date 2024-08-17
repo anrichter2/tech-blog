@@ -21,7 +21,7 @@ nav  a {
     color: white !important;
 }
 
-.custom-anchor {
+.custom-anchor-text {
     text-decoration: none;
     color: white;
 }
@@ -32,4 +32,8 @@ nav  a {
 
 .secondary-background {
     background-color: var(--secondary-color);
+}
+
+.text-white {
+    color: white;
 }

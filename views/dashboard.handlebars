@@ -4,13 +4,18 @@
     </div>
     {{#if posts.length}}
         {{#each posts as |post| }}
-            <div>
-                <h3><a href="/post/{{post.id}}">{{post.title}}</a></h3>
-                <p>{{format_date post.date_created}}</p>
+        <div class="card border border-5 border-black rounded-4 my-3">
+            <div class="d-flex justify-content-between align-items-center primary-background">
+                <h3><a class="custom-anchor-text" href="/post/{{post.id}}">{{post.title}}</a></h3>
+                <p class="text-white">{{format_date post.date_created}}</p>
             </div>
+        </div>
         {{/each}}
     {{/if}}
+    <div class="target-div"></div>
     <div>
-        <button>New Post</button>
+        <button id="post-button" class="btn btn-primary">New Post</button>
     </div>
 </div>
+
+<script src="/js/newPost.js"></script>
