@@ -1,35 +1,58 @@
-{{!-- used to display post and leave a comment --}}
-{{#if req.session.user_id !== post.user_id}}
-{{#each post }}
+{{!-- Display currently selected post--}}
+{{log 'post handlebars' post}}
 <div>
     <div>
         <div>
             <h2>{{title}}</h2>
-            <p>Posted by {{username}} on {{ format_date date_created}}</p>
+            <p>Posted by {{user.username}} on {{ format_date date_created}}</p>
         </div>
     </div>
     <div>
         <p>{{text}}</p>
     </div>
 </div>
-{{/each}}
+
+{{!-- Display any available comments --}}
+{{#if comment.length}}
 <div>
-    <form>
-        <div>
-            <label for="post-comment">Comment</label>
-            <textarea id="post-comment" name="post-comment"></textarea>
+    <p>{{comment.comment_text}}</p>
+    <p>{{comment.date_commented}}</p>
+</div>
+{{/if}}
+
+{{!-- If this post was left by logged in user then display update and delete options --}}
+{{#if statement}}
+<div>
+    <form id="update-form" data-id="{{id}}">
+        <div class="my-3">
+            <label for="update-title" class="form-label">Title</label>
+            <input class="form-input form-control" type="text" id="update-title" value="{{title}}">
+        </div>
+        <div class="my-3">
+            <label for="update-text" class="form-label">Content</label>
+            <textarea id="update-text" name="update-text" class="form-control">{{text}}</textarea>
         </div>
         <div>
-            <button type="submit">Add comment</button>
+            <button id="update-post-button" type="submit" class="btn btn-primary">Update Post</button>
+        </div>
+    </form>
+    <button id="delete-post-button" class="btn btn-primary" data-id="{{id}}">Delete Post</button>
+</div>
+<script src="/js/updatePost.js"></script>
+
+{{!-- If post not written by logged in user display comment option --}}
+{{else}}
+<div>
+    <form id="comment-form">
+        <div class="my-3">
+            <label for="post-comment" class="form-label">Comment</label>
+            <textarea id="post-comment" name="post-comment" class="form-control"></textarea>
+        </div>
+        <div>
+            <button id="comment-button" type="submit" class="btn btn-primary" data-id="{{id}}">Add comment</button>
         </div>
     </form>
 </div>
 
-<script src="./js/commentPost.js"></script>
-{{/if}}
-
-{{#if req.session.user_id == post.user_id}}
-{{!-- Code for displaying the text fo a post beloging to the user and then buttons to update the post or delete post --}}
-
-<script src="./js/updatePost"></script>
+<script src="/js/commentPost.js"></script>
 {{/if}}

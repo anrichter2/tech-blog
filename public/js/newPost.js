@@ -25,7 +25,7 @@ function handleMakePostForm(event) {
     labelElB.textContent = 'Content'
     const textareaEl = document.createElement('textarea');
     textareaEl.classList.add('form-control');
-    labelElB.setAttribute('id', 'post-content');
+    textareaEl.setAttribute('id', 'post-content');
 
     const buttonDiv = document.createElement('div');
     const postButton = document.createElement('button');
@@ -40,32 +40,28 @@ function handleMakePostForm(event) {
     contentDiv.append(labelElB, textareaEl);
     buttonDiv.appendChild(postButton);
 
-    const postForm = document.querySelector('new-post-form');
-    postForm.addEventListener('submit', handleSubmitForm)
+    const postForm = document.querySelector('#new-post-form');
+    postForm.addEventListener('submit', newPostHandler);
 };
 
-function handleSubmitForm(event) {
+const newPostHandler = async (event) => {
     event.preventDefault();
     const title = document.querySelector('#post-title').value.trim();
     const content = document.querySelector('#post-content').value.trim();
 
-    const sendPost = async () => {
-        if (title && content) {
-            const response = await fetch('/api/post/', {
-                method: 'POST',
-                body: JSON.stringify({ title, text: content }),
-                headers: { 'Content-Type': 'application/json' },
-            });
+    if (title && content) {
+        const response = await fetch('/api/post/', {
+            method: 'POST',
+            body: JSON.stringify({ title, text: content }),
+            headers: { 'Content-Type': 'application/json' },
+        });
 
-            if (response.ok) {
-                document.location.replace('/dashboard');
-            } else {
-                alert(response.statusText)
-            }
-        }
-    }
-
-    sendPost();
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert(response.statusText)
+        };
+    };
 };
 
 postButton.addEventListener('click', handleMakePostForm)

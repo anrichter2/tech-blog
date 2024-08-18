@@ -65,7 +65,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-// Route for showing an individual post
+// Route for showing an individual post and comments
 router.get('/post/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -75,16 +75,25 @@ router.get('/post/:id', withAuth, async (req, res) => {
                     attributes: ['username'],
                     exclude: ['password']
                 },
-                {
-                    model: Comment,
-                }
+                // {
+                //     model: Comment, might need to do findbypk for comments seperetly and pass to handlebars page or add a where clause
+                // }
             ],
         });
 
         const post = postData.get({ plain: true });
+        console.log('post', post);
+
+        let statement;
+        if (req.session.user_id === post.user_id) {
+            statement = true
+        } else {
+            statement = false
+        }
 
         res.render('post', {
             ...post,
+            statement,
             logged_in: req.session.logged_in
         });
 
