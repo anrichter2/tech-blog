@@ -39,6 +39,6 @@ const deletePosthandler = async (event) => {
     };
 };
 
-document.querySelector('#update-form').addEventListener('submit', updatePosthandler)
+document.querySelector('#update-form').addEventListener('submit', updatePosthandler);
 
-document.querySelector('#delete-post-button').addEventListener('click', deletePosthandler)
+document.querySelector('#delete-post-button').addEventListener('click', deletePosthandler);

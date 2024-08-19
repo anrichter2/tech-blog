@@ -18,4 +18,4 @@ const newCommentForm = async (event) => {
     }
 };
 
-document.querySelector('#comment-button').addEventListenter('submit', newCommentForm)
+document.querySelector('#comment-form').addEventListener('submit', newCommentForm);

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models/index');
+const { User, Post, Comment} = require('../models/index');
 const withAuth = require('../utils/auth');
 
 // Route for displaying all posts on the homepage
@@ -67,7 +67,9 @@ router.get('/signup', (req, res) => {
 
 // Route for showing an individual post and comments
 router.get('/post/:id', withAuth, async (req, res) => {
+    console.log('hit')
     try {
+        console.log('hit2')
         const postData = await Post.findByPk(req.params.id, {
             include: [
                 {
@@ -75,9 +77,12 @@ router.get('/post/:id', withAuth, async (req, res) => {
                     attributes: ['username'],
                     exclude: ['password']
                 },
-                // {
-                //     model: Comment, might need to do findbypk for comments seperetly and pass to handlebars page or add a where clause
-                // }
+                {
+                    model: Comment,
+                    right: true,
+                    required: false,
+                    attributes: ['comment_text', 'date_commented']
+                }
             ],
         });
 
