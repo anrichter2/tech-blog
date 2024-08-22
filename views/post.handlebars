@@ -1,5 +1,4 @@
 {{!-- Display currently selected post--}}
-{{log comments}}
 <div class="card border border-5 border-black rounded-4 my-3">
     <div class="card-header primary-background">
         <div class="d-flex justify-content-between align-items-center">
@@ -19,7 +18,7 @@
 <div class="card border border-5 border-black rounded-4 my-3">
     <div class="d-flex justify-content-between align-items-center primary-background px-2">
         <p class="text-white">{{comment.comment_text}}</p>
-        <p class="text-white">{{format_date comment.date_commented}}</p>
+        <p class="text-white">Posted by {{user_name}} on {{format_date comment.date_commented}}</p>
     </div>
 </div>
 {{/each}}

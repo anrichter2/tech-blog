@@ -8,6 +8,7 @@ function handleMakePostForm(event) {
 
     const formEL = document.createElement('form');
     formEL.setAttribute('id', 'new-post-form');
+    formEL.classList.add('my-3');
 
     const titleDiv = document.createElement('div');
     titleDiv.classList.add('my-3');

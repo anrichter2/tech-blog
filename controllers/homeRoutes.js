@@ -87,7 +87,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
                 {
                     model: Comment,
                     required: false,
-                    attributes: ['comment_text', 'date_commented']
+                    attributes: ['comment_text', 'date_commented', 'user_name']
                 }
             ],
         });
