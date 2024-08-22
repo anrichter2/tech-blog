@@ -1,3 +1,4 @@
+// arrow function for logging in as an already existing user
 const loginForm = async (event) => {
     event.preventDefault();
     const username = document.querySelector('#username-login').value.trim();

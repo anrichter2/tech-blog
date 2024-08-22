@@ -1,3 +1,4 @@
+// arrow function to handle logging out of your user account
 const logout = async () => {
     const response = await fetch('/api/user/logout', {
         method: 'POST',

@@ -1,3 +1,4 @@
+// arrow function for creating a new user
 const signUpForm = async (event) => {
     event.preventDefault();
     const username = document.querySelector('#username-signup').value.trim();

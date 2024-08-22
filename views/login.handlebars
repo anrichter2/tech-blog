@@ -1,3 +1,4 @@
+{{!-- login page for those that have an account already --}}
 <div class="border border-5 border-black rounded-4 px-4">
     <h2>Login</h2>
     <form id="login-form">
@@ -7,12 +8,13 @@
         </div>
         <div class="my-3">
             <label for="password-login" class="form-label">Password:</label>
-            <input class="form-input form-control" type="text" id="password-login" />
+            <input class="form-input form-control" type="password" id="password-login" />
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Login</button>
         </div>
     </form>
+    {{!-- Link to sign up page if you don't have an account yet --}}
     <div class="my-3">
         <a href="/signup">Sign up Instead</a>
     </div>

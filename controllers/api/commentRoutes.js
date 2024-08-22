@@ -2,8 +2,10 @@ const router = require('express').Router();
 const { Comment } = require('../../models/index');
 const withAuth = require('../../utils/auth');
 
+// POST route for making a new comment with withAuth middleware to check that user is logged in
 router.post('/:id', withAuth, async (req, res) => {
     try {
+        // Create a new comment using the body from the POST fetch request from commentPost.js and the url parameter of id
         const newPost = await Comment.create({
             ...req.body,
             post_id: req.params.id,

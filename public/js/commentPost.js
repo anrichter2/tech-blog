@@ -1,3 +1,4 @@
+// javascript file used on a post.handlebars page to add a comment to a post
 const newCommentForm = async (event) => {
     event.preventDefault();
     const comment = document.querySelector('#post-comment').value.trim();

@@ -2,6 +2,8 @@ const User = require('./user');
 const Post = require('./post');
 const Comment = require('./comment')
 
+// setting up relationships
+// a user can have many posts and a post can have many comments
 User.hasMany(Post, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'

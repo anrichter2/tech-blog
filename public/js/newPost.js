@@ -1,6 +1,8 @@
+// // javascript file used on a dashboard.handlebars page to add a new post
 const postButton = document.querySelector('#post-button');
 const targetDiv = document.querySelector('.target-div');
 
+// function for dynamically generating a form on the dashboard page that makes a new post
 function handleMakePostForm(event) {
     event.preventDefault();
 
@@ -40,10 +42,12 @@ function handleMakePostForm(event) {
     contentDiv.append(labelElB, textareaEl);
     buttonDiv.appendChild(postButton);
 
+    // createws new event listener for submitting the newly made form
     const postForm = document.querySelector('#new-post-form');
     postForm.addEventListener('submit', newPostHandler);
 };
 
+// arrow function to handle submitting the information of a new post
 const newPostHandler = async (event) => {
     event.preventDefault();
     const title = document.querySelector('#post-title').value.trim();

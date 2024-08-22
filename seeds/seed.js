@@ -4,8 +4,7 @@ const { User, Post } = require('../models');
 const userData = require('./userSeeds.json');
 const postData = require('./postSeeds.json');
 
-console.log(postData);
-
+// function for seeding the database with some users and posts
 const seedDataBase = async () => {
     await sequelize.sync({ force: true });
 
@@ -13,10 +12,6 @@ const seedDataBase = async () => {
         individualHooks: true,
         returning: true,
     });
-
-    console.log('hit')
-
-    // const posts = await Post.bulkCreate(postData)
 
     for (const post of postData) {
         await Post.create({...post});

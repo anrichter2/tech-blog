@@ -1,18 +1,20 @@
+{{!-- sign up page for those that don't have an account already --}}
 <div class="border border-5 border-black rounded-4 px-4">
     <h2>Sign up</h2>
     <form id="signup-form">
         <div class="my-3">
-            <label for="username-login" class="form-label">Username:</label>
+            <label for="username-signup" class="form-label">Username:</label>
             <input class="form-input form-control" type="text" id="username-signup"/>
         </div>
         <div class="my-3">
-            <label for="password-login" class="form-label">Password:</label>
-            <input class="form-input form-control" type="text" id="password-signup"/>
+            <label for="password-signup" class="form-label">Password:</label>
+            <input class="form-input form-control" type="password" id="password-signup"/>
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Sign Up</button>
         </div>
     </form>
+    {{!-- Link to login page if you have an account already --}}
     <div class="my-3">
         <a href="/login">Login in Instead</a>
     </div>

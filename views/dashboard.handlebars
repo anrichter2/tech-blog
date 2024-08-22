@@ -2,6 +2,7 @@
     <div>
         <h2>Welcome to your dashboard, {{username}}</h2>
     </div>
+    {{!-- If this user has made any posts they will be displayed here --}}
     {{#if posts.length}}
         {{#each posts as |post| }}
         <div class="card border border-5 border-black rounded-4 my-3">
@@ -12,10 +13,12 @@
         </div>
         {{/each}}
     {{/if}}
+    {{!-- target for adding a new post form when the button below is clicked --}}
     <div class="target-div"></div>
     <div>
         <button id="post-button" class="btn btn-primary">New Post</button>
     </div>
 </div>
 
+{{!-- javascript for creating and submitting a new post --}}
 <script src="/js/newPost.js"></script>

@@ -1,3 +1,5 @@
+// // javascript file used on a post.handlebars page to update or delete a post made by the logged in user
+// arrow function for updating a post
 const updatePosthandler = async (event) => {
     event.preventDefault();
 
@@ -5,6 +7,7 @@ const updatePosthandler = async (event) => {
     const updateText = document.querySelector('#update-text').value.trim();
     const id = event.target.getAttribute('data-id');
 
+    // if both variables have values it starts a PUT fetch request
     if (updateTitle && updateText) {
         const response = await fetch(`/api/post/${id}`, {
           method: 'PUT',
@@ -14,6 +17,7 @@ const updatePosthandler = async (event) => {
           },
         });
     
+        // takes you back to dashboard if successful
         if (response.ok) {
           document.location.replace('/dashboard');
         } else {
@@ -22,6 +26,7 @@ const updatePosthandler = async (event) => {
       }
 }
 
+// arrow function for deleting a post
 const deletePosthandler = async (event) => {
     event.preventDefault();
     if (event.target.hasAttribute('data-id')) {
@@ -39,6 +44,7 @@ const deletePosthandler = async (event) => {
     };
 };
 
+// Event listeners for updating or deleting
 document.querySelector('#update-form').addEventListener('submit', updatePosthandler);
 
 document.querySelector('#delete-post-button').addEventListener('click', deletePosthandler);
