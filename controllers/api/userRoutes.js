@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
 
         // If password doesn't match send message
         if(!userPassword) {
-            res.status(400).json({ message: "Incorrect password, please try again"});
+            res.status(404).json({ message: "Incorrect password, please try again"});
             return;
         };
 

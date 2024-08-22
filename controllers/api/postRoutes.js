@@ -13,7 +13,7 @@ router.post('/', withAuth, async (req, res) => {
 
         res.status(200).json(newPost);
     } catch (err) {
-        res.status.json(err);
+        res.status(500).json(err);
     };
 });
 
